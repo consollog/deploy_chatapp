@@ -18,16 +18,16 @@ const __dirname = path.resolve()
 
 app.use(cookieParser())
 app.use(express.json())
-app.use(cors({ origin: "http://localhost:5173", credentials: true }))
+app.use(cors({ origin: "https://deploy-chatapp.onrender.com", credentials: true }))
 
 app.use("/api/auth", authRoutes)
 app.use("/api/message", messageRoutes)
 app.use("/api/user", userRoutes)
 
-app.use(express.static(path.join(__dirname,"/Frontend/dist")))
+app.use(express.static(path.join(__dirname, "/Frontend/dist")))
 
-app.get("*",(req,res)=>{
-    res.sendFile(path.join(__dirname,"Frontend","dist","index.html"))
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"))
 })
 
 server.listen(PORT, () => {
